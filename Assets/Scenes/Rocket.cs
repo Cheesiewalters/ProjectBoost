@@ -5,7 +5,7 @@ public class Rocket : MonoBehaviour
 {
     Rigidbody rigidBody;
     AudioSource audioSource;
-    public static int level = 1;
+    public static int level = 0;
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
     [SerializeField] AudioClip ThrustSound;
@@ -68,17 +68,18 @@ public class Rocket : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        if(level >= 3)
+        if(level >= 2)
         {
 
         }
         else{
-        SceneManager.LoadScene(level);
-        level ++;
+            level++;
+            SceneManager.LoadScene(level);
         }
     }
     private void LoadFirstLevel()
     {
+        level = 0;
         SceneManager.LoadScene(0);
     }
 
