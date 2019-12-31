@@ -82,9 +82,10 @@ public class Rocket : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        if(level > 3)
+        if(level >= 3)
         {
-
+            level = 0;
+            SceneManager.LoadScene(level);
         }
         else{
             level++;
@@ -93,8 +94,13 @@ public class Rocket : MonoBehaviour
     }
     private void LoadFirstLevel()
     {
-        level = 0;
-        SceneManager.LoadScene(0);
+        if(level == 0)
+        {
+            level ++;
+            SceneManager.LoadScene(0);
+        }
+        level = level - 1;
+        SceneManager.LoadScene(level);
     }
 
     private void RespondToThrustInput()
