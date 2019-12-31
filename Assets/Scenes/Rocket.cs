@@ -34,8 +34,20 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             ProcessRotationInput();
         }
+
+        if(Debug.isDebugBuild)
+        {
+            RespondToDevKeys();
+        }
     }
 
+    void RespondToDevKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (state != State.Alive) { return; }
@@ -70,7 +82,7 @@ public class Rocket : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        if(level >= 2)
+        if(level > 3)
         {
 
         }
