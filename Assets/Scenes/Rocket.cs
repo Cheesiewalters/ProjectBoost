@@ -5,18 +5,14 @@ public class Rocket : MonoBehaviour
 {
     Rigidbody rigidBody;
     AudioSource audioSource;
-
     [SerializeField] float rcsThrust = 100f;
-    [SerializeField] float mainThrust = 10f;
-
+    [SerializeField] float mainThrust = 100f;
     [SerializeField] AudioClip ThrustSound;
     [SerializeField] AudioClip Dead;
     [SerializeField] AudioClip Success;
-
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem deathParticles;
-
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
 
@@ -73,7 +69,6 @@ public class Rocket : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
     private void LoadFirstLevel()
     {
         SceneManager.LoadScene(0);
@@ -81,7 +76,7 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        if (Input.GetKey(KeyCode.Space)) 
+        if (Input.GetKey(KeyCode.Space))
         {
             ApplyThrust();
         }
@@ -106,7 +101,6 @@ public class Rocket : MonoBehaviour
     {
         rigidBody.freezeRotation = true;
         float rotationThisFrame = rcsThrust * Time.deltaTime;
-        
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward * rotationThisFrame);
