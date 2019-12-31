@@ -16,6 +16,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] ParticleSystem deathParticles;
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
+    private float levelLoadDelay = 2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +57,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         successParticles.Play();
         audioSource.PlayOneShot(Success);
-        Invoke("LoadNextLevel", 1f);
+        Invoke("LoadNextLevel", levelLoadDelay);
     }
 
     private void StartDeathSequence()
@@ -64,7 +66,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         deathParticles.Play();
         audioSource.PlayOneShot(Dead);
-        Invoke("LoadFirstLevel", 1f);
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
     private void LoadNextLevel()
     {
